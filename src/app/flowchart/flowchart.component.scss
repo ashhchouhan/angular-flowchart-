@@ -1,0 +1,25 @@
+/* flowchart.component.scss */
+.flowchart-container {
+    border: 1px solid black;
+    width: 800px;
+    height: 600px;
+  }
+  
+  .node {
+    fill: #cce;
+    stroke: #666;
+    cursor: pointer;
+  }
+  
+  .node:hover {
+    fill: #96e;
+  }
+  
+  .link {
+    stroke: #666;
+    stroke-width: 2;
+  }
+  
+  .link:hover {
+    stroke: #f60;
+  }

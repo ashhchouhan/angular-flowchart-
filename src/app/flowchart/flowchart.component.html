@@ -1,0 +1,24 @@
+<!-- <div class="nested-flow-step" #canvasContent>
+    <span>{{ data.name }}</span>
+    <div ngFlowchartCanvas [ngFlowchartCallbacks]="callbacks" class="nested-canvas-content">
+    </div>
+  </div> -->
+
+<div class="flowchart-container">
+    <svg width="100%" height="100%">
+        @for(node of data.nodes ; track node){
+        <g>
+            <rect [attr.x]="node.x"  [attr.y]="node.y"  [attr.width]="node.width" [attr.height]="node.height"  fill="white" stroke="white"></rect>
+            <text [attr.x]="node.x + node.width / 2" [attr.y]="node.y + node.height / 2" text-anchor="middle" alignment-baseline="central">{{ node.label }}</text>
+        </g>
+        }
+        @for(connection of data.connections ; track connection) {
+        <line [attr.x1]="getConnectionStartX(connection)" [attr.y1]="getConnectionStartY(connection)"
+            [attr.x2]="getConnectionEndX(connection)" [attr.y2]="getConnectionEndY(connection)" stroke="black" stroke-width="2"></line>
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerHeight="6" orient="auto" fill="black" >
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+            </marker>
+            <use xlink:href="#arrow" transform="translate(${getConnectionEndX(connection)}, ${getConnectionEndY(connection)}) rotate(${getArrowAngle(connection)})"></use>
+        }
+    </svg>
+</div>
